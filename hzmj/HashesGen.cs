@@ -147,6 +147,25 @@ namespace hzmj
                 return true;
             }).ToList();
 
+            hashes = hashes.Where(x =>
+            {
+                bool zero = false;
+                while (x != 0)
+                {
+                    if (x % 10 == 0)
+                    {
+                        if (zero)
+                            return false;
+
+                        zero = true;
+                    }
+                    else
+                        zero = false;
+                    x = x / 10;
+                }
+                return true;
+            }).ToList();
+
             hashes.Sort();
 
             // special value
