@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace hzmj
 {
-    public static class GroupGen
+    public static class GroupsGen
     {
+        public static Stopwatch _stopwatch;
+
         public static void Generate()
         {
-            //SaveGroups("groups_5.txt", 1);
-            //SaveGroups("groups_8.txt", 2);
-            //SaveGroups("groups_11.txt", 3);
-            SaveGroups("groups_14.txt", 4);
+            _stopwatch = new Stopwatch();
+            _stopwatch.Start();
+            SaveGroups("groups.txt");
         }
 
-        private static void SaveGroups(string path, int mianziCount)
+        private static void SaveGroups(string path)
         {
-            var groups = GetGroups(mianziCount);
+            var groups = GetGroups();
 
             Util.Write(path, sw =>
             {
@@ -50,7 +52,7 @@ namespace hzmj
             return mianzis;
         }
 
-        private static List<List<int>> GetGroups(int mianziCount)
+        private static List<List<int>> GetGroups()
         {
             var jiangs = GetJiangs();
             var mianzis = GetMianzis();
@@ -62,38 +64,22 @@ namespace hzmj
                 var jiang = jiangs[i];
                 for (var m1 = 0; m1 < mianzis.Count; m1++)
                 {
-                    Console.WriteLine("{0},{1},{2}", i, m1, groups.Count);
+                    Console.WriteLine("{0},{1},{2},time:{3}", i, m1, groups.Count, _stopwatch.ElapsedMilliseconds / 1000f);
                     if (i == m1 && m1 < 27)
                         continue;
-
                     var mianzi1 = mianzis[m1];
-                    if (mianziCount <= 1)
-                    {
-                        AddGroup(dic, groups, jiang, mianzi1);
-                        continue;
-                    }
 
                     for (int m2 = 0; m2 < mianzis.Count; m2++)
                     {
                         if ((i == m2 || m1 == m2) && m2 < 27)
                             continue;
                         var mianzi2 = mianzis[m2];
-                        if (mianziCount == 2)
-                        {
-                            AddGroup(dic, groups, jiang, mianzi1, mianzi2);
-                            continue;
-                        }
 
                         for (int m3 = 0; m3 < mianzis.Count; m3++)
                         {
                             if ((i == m3 || m1 == m3 || m2 == m3) && m3 < 27)
                                 continue;
                             var mianzi3 = mianzis[m3];
-                            if (mianziCount == 3)
-                            {
-                                AddGroup(dic, groups, jiang, mianzi1, mianzi2, mianzi3);
-                                continue;
-                            }
 
                             for (var m4 = 0; m4 < mianzis.Count; m4++)
                             {
