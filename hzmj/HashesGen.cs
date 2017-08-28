@@ -25,6 +25,7 @@ namespace hzmj
                 .GroupBy(x => string.Join(",", x)).Select(x => x.First()).OrderBy(x => x.Length).ToList();
 
             Console.WriteLine("sort groups time:" + stopWatch.ElapsedMilliseconds / 1000f);
+            Console.WriteLine("groups length:" + groups.Count);
 
             var hashDic = new Dictionary<int, int>();
 
@@ -147,6 +148,9 @@ namespace hzmj
             }).ToList();
 
             hashes.Sort();
+
+            // special value
+            hashes[0] = 0;
 
             Console.WriteLine("all count:" + hashes.Count);
 
