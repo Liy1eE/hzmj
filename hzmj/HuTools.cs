@@ -5,11 +5,33 @@
         public static int CalcKey(int[] newGroup, int color)
         {
             int ret = 0;
-            int zeroCount = -9;
+            int zeroCount = 0;
 
             for (int j = color; j < 9; j++)
             {
                 int count = newGroup[color * 9 + j];
+                if (count == 0)
+                    zeroCount++;
+                else
+                {
+                    if (zeroCount > 0)
+                        ret = ret * (zeroCount > 1 ? 100 : 10);
+
+                    zeroCount = 0;
+                    ret = ret * 10 + count;
+                }
+            }
+
+            return ret;
+        }
+
+        public static int CalcKey(int[] array)
+        {
+            int ret = 0;
+            int zeroCount = 0;
+
+            foreach (int count in array)
+            {
                 if (count == 0)
                     zeroCount++;
                 else
