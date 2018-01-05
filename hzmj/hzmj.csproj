@@ -42,9 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GroupsGen.cs" />
+    <Compile Include="HashData.cs" />
     <Compile Include="HashesGen.cs" />
-    <Compile Include="HashesGen2.cs" />
     <Compile Include="HuTools.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

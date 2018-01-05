@@ -1,10 +1,10 @@
 ﻿namespace hzmj
 {
-    internal class Program
+    public class Program
     {
         private static void Main()
         {
-            HashesGen2.Generate();
+            HashesGen.Generate();
         }
     }
 }

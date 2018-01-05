@@ -4,41 +4,7 @@ using System.Linq;
 
 namespace hzmj
 {
-    public class HashData
-    {
-        public int Key { get; }
-        public int? HzCount { get; private set; }
-        public bool? IsJiang { get; private set; }
-
-        public HashData(int key)
-        {
-            Key = key;
-        }
-
-        public void SetState(int hzCount, bool isJiang)
-        {
-            if (HzCount == null && IsJiang == null)
-            {
-                HzCount = hzCount;
-                IsJiang = isJiang;
-            }
-            else
-            {
-                if (hzCount < HzCount)
-                {
-                    HzCount = hzCount;
-                    IsJiang = isJiang;
-                }
-            }
-        }
-
-        public override string ToString()
-        {
-            return "[" + Key + "]";
-        }
-    }
-
-    public class HashesGen2
+    public class HashesGen
     {
         private static readonly Dictionary<int, bool> _parsedGroupDic = new Dictionary<int, bool>();
         private static readonly Dictionary<int, HashData> _hashDic = new Dictionary<int, HashData>();
@@ -117,7 +83,7 @@ namespace hzmj
                     Add(key, hzCount, isJiang);
                 }
 
-                if (hzCount <= 4)
+                if (hzCount < 4)
                     GenHash(array, hzCount + 1, isJiang);
 
                 array[i] += 1;
