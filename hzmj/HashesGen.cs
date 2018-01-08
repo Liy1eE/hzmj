@@ -16,6 +16,7 @@ namespace hzmj
             for (int i = 0; i < 9; i++)
             {
                 array[i] = 2;
+                ParseGroup(array, true);
                 GenGroup(array, true);
                 array[i] = 0;
             }
