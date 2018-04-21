@@ -42,12 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GroupsGen.cs" />
+    <Compile Include="CardType.cs" />
+    <Compile Include="HashData.cs" />
     <Compile Include="HashesGen.cs" />
     <Compile Include="HuTools.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
